@@ -1,0 +1,323 @@
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+   <title>BioFolD - Biomolecules, Folding and Disease</title>
+
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <meta name="Keywords" content=" 
+   stability, folding, disease, mutation, Structure,
+   SARA, SARA-Coffee, WebRASP, machine learning, 
+   Emidio Capriotti, Bioinformatics, RNA, Proteins,
+   University, Alabama, Birmingham, BioFolD">
+   <meta name="Author" content="Emidio Capriotti">
+   <meta name="Generator" content="">
+
+   <link rel="stylesheet" href="./pages/style.css" 
+   type="text/css" title="BioFolD - Biomolecules, Folding and Disease">
+   <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
+   </head>
+   
+    <script type="text/javascript">
+    var today = new Date();
+    var year_now = today.getFullYear();
+    var month_now = today.getMonth();
+    function writeYearOptions(startYear, endYear)
+    {
+    var optionCounter;
+    for (optionCounter = startYear; optionCounter >= endYear; optionCounter--)
+    {
+    document.write('<OPTION value=' + optionCounter + '>' + optionCounter);
+    }
+    }
+    function writeMonthOptions()
+    {
+    var Months=["Year","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var vMonths=["","01","02","03","04","05","06","07","08","09","10","11","12"];
+    for (optionCounter = 0; optionCounter <= 12; optionCounter++)
+    {
+    document.write('<OPTION value=' + vMonths[optionCounter] + '>' + Months[optionCounter]);
+    }
+    }
+    function writeTools()
+    {
+    var Tools=["ALL","SARA","Structure"];
+    for (optionCounter = 0; optionCounter <= 2; optionCounter++)
+    {
+    document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
+    }
+    }
+</script>
+<script src='http://maps.google.com/maps/api/js?v=3&amp;sensor=false'></script>
+    <script src="maps/OpenLayers.js">
+    </script>
+    
+    
+    <script type="text/javascript">
+    var map;
+        
+        
+    function CheckDate(month,year)
+		{
+		var dmonth = {"": 0, "01": 1,"02": 2,"03": 3,"04": 4,"05": 5,"06": 6,"07": 7,"08":8,"09": 9,"10": 10,"11": 11,"12": 12 };	
+		var today = new Date();
+        var this_year = today.getFullYear();
+        var this_month = today.getMonth()+1;
+        var long_today = this_year*100+this_month;
+        var long_date = year*100+dmonth[month];
+        /* Server up since September2012 = 201209 */
+		if ( (long_date>=201209 || long_date==201200 ) && long_date<=long_today )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		}    
+        
+        
+    function addServer(name,month,year,mcolor)
+        {
+        var htool = {"structure": "Structure@UAB", "sara": "SARA" };
+        if (htool[name] === undefined )
+        {
+        	var geoname="Other";
+        }
+        else
+        {
+        	var geoname=htool[name];
+        }
+        var marlayer = new OpenLayers.Icon("maps/img/"+mcolor+"-ball.png", new OpenLayers.Size(11,11));
+        var filename="maps/georss/access_"+name+year+month+".xml";
+        if (CheckDate(month,year) == true)
+        {
+        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, filename, {'icon': marlayer});
+        }
+        else
+        {
+        	var nologfile = "maps/georss/nolog.xml";
+        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, nologfile, {'icon': marlayer});
+        }
+        return slayer;
+        }
+        
+
+    function timemap(month,year)
+    	{
+        	
+        map = new OpenLayers.Map('map');
+
+        var satellite = new OpenLayers.Layer.Google(
+            "Google Map")
+            
+        var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
+        var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+		
+		var structure = addServer('structure',month,year,'yellow');
+		var sara = addServer('sara',month,year,'orange');
+
+    	map.addLayers([satellite,structure,sara,sbass]); 
+
+
+		map.setCenter(new OpenLayers.LonLat(0,0), 1);
+    	map.addControl( new OpenLayers.Control.LayerSwitcher() );
+		}
+	
+	    function get_time()
+    	{ 
+    	var i;
+    	var month=document.selectlog.month.value;
+    	var year=document.selectlog.year.value;
+
+		map.layers[1].destroy();
+			
+		map.layers[1].destroy();
+		var nsnps = addServer('structure',month,year,'yellow');
+		map.addLayer(nsnps);
+    	
+		map.layers[1].destroy();
+		var nphdsnp = addServer('sara',month,year,'orange');
+		map.addLayer(nphdsnp);
+	
+		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
+		var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+		map.addLayer(sbass);
+
+    	map.refresh();
+
+    	/*var pp = document.getElementById('map').innerHtml;
+    	document.write(pp);*/
+    	return false;
+    	}
+    
+    function get_now() 
+    	{
+    	var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth()+1;
+        var lmonth=["","01","02","03","04","05","06","07","08","09","10","11","12"];
+        timemap(lmonth[month],year);
+    	return false;
+    	}
+    	
+    function show_layer(servername)
+    	{
+    	var i;
+    	var ntool = {"Structure\@UAB": 1, "SARA": 2, "UAB": 3 };
+    	var numserver = ntool[servername];
+   		for (i = 1; i <= 2; i++)
+    	{
+    	if (i != numserver)
+    	{
+    		map.layers[i].setVisibility(false);  
+    	}
+    	else
+    	{
+    		map.layers[i].setVisibility(true);
+    	}   	
+    	}
+    	map.refresh();
+    	return false;
+    	}
+    	
+    function show_alllayer()
+    	{
+    	var i;
+   		for (i = 2; i <= 2; i++)
+    	{
+    		map.layers[i].setVisibility(true);
+    	}   	
+    	map.refresh();
+    	return false;
+    	}
+    
+   </script>
+   
+   
+   
+   
+   <body onload="get_now();">
+   <!-- Start main -->
+   <div id="main">
+   <br><br><br>
+    <!-- Start header -->
+    <div id="content"><img class="header" src="./pages/img/strubio.png" 
+    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
+      <br />
+    </div>
+   
+    
+    <!-- End header -->
+
+    <!-- Start menu -->
+    <div id="menu">
+          <table class="navig">
+          <tbody><tr>
+           <td class="blank"></td>
+           <td class="cell"><a href="index.html">Home</a></td>
+           <td class="cell"><a href="pages/research.html">Research</a></td>
+           <td class="cell"><a href="pages/people.html">People</a></td>
+           <td class="cell"><a href="pages/resources.html">Resources</a></td>
+           <td class="cell"><a href="pages/papers.html">Publications</a></td>
+           <td class="cell"><a href="pages/training.html">Training</a></td>
+           <td class="blank"></td></tr>
+        </tbody></table>
+    </div>
+    <!-- End menu -->
+
+    <!-- Start content -->
+    <div id="content">
+     
+   <p class="txtzone">
+	
+   <br />
+   In this page are reported information about the projects related to the 
+   the study of macromolecular structures .
+   Currently we have one web tools located in our server and other two
+   developed tools hosted in other servers:
+   <br /><br />
+     <table class="paper">
+     <tbody>
+     <tr>
+       <td valign="top" width=130><a target="blank" 
+     href="http://structure.biofold.org/sara/"><b>SARA</b></a></td>
+       <td valign="top">Method for RNA structure alignment and RNA functional assignment. <br />
+         <a target="blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19483098"> <img src="pages/img/pubmed.gif" /></a> 
+         <a href="pages/documents/papers/CapriottiNAR09.pdf"> <img src="pages/img/pdf.gif" /></a></td>
+     </tr>     
+          <tr>
+     <td valign="top" width=130><a target="blank"
+     href="http://www.tcoffee.org/Projects/saracoffee/"><b>SARA-Coffee</b></a></td>
+     <td valign="top">Method for RNA multiple structure alignment  <br />
+     <a target="blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23449094"><img src="pages/img/pubmed.gif" /></a> 
+     <a href="pages/documents/papers/Kemena_Bioinformatics2013.pdf"><img src="pages/img/pdf.gif" /></a></td>
+     </tr>
+     <tr>
+          <td valign="top" width=130><a target="blank"
+               href="http://melolab.org/webrasp"><b>WebRASP</b></a></td>
+          <td valign="top">Method for the assessment RNA 3D structures  <br />
+     <a target="blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23929030"><img src="pages/img/pubmed.gif" /></a> 
+     <a href="pages/documents/papers/Norambuena_Bioinformatics2013.pdf"><img src="pages/img/pdf.gif" /></a></td> 
+     </tr>        
+     </tbody></table>
+
+     <p class="txtzone">
+     The implementation of these web servers has been made possible
+     with funds from the Marie Curie International Reintegration Grant (IRG39722) 
+     delivered to Marc Marti-Renom. 
+     <br>
+     Since September 2012, the log file of this server is monitored periodically 
+     and the tools' usage is mapped below. Better statistics about the usage of these resources are available 
+     on this <a href="http://biofold.org/awstats/awstats.pl?config=structure.biofold.org" target=_blank>web page</a>.
+     <br /><br /> 
+     <form name="selectlog" method=post  align=center >
+     </select>
+     <select name="month">
+     <script>
+     writeMonthOptions();
+     </script>
+     </select>
+     <select name="year">
+     <script>
+     writeYearOptions(year_now,2012);
+     </script>
+     </select>
+     <input type="button" value="OK" onclick="get_time();"/>
+     <br>
+     <br>
+     </form>
+     <div id="map" class="mediummap" > </div>
+     <br>
+     <div id="maplegend"> 
+     <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
+     <img src="maps/img/bass.png" width="13" height="13" > 
+     <a style="cursor: pointer;" onclick='show_layer("UAB");' >UAB</a> &nbsp; 
+     <img src="maps/img/yellow-ball.png" width="11" height="11"> 
+     <a style="cursor: pointer;" onclick='show_layer("Structure\@UAB");' >Structure@UAB</a> &nbsp;
+     <img src="maps/img/orange-ball.png" width="11" height="11"  > 
+     <a style="cursor: pointer;" onclick='show_layer("SARA");' >SARA</a> &nbsp;
+     </div>
+
+     
+     </p>
+     <br>
+     </p>
+    
+    <!-- Start bottom -->
+    <div id="bottom">
+    University of Alabama at Birmingham.    
+    619 19th St. South, WP220.
+    Birmingham (AL), 35249 (USA).
+     <br>
+    </div>
+    <!-- End bottom -->
+ 
+    <div id="content"><img class="bottom" src="./pages/img/bottom.png" 
+    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /></div>
+    <!-- End footer -->
+  </div>
+    <!-- End Main -->
+   <br>
+   <br>
+  </div>
+</body></html>
+   
