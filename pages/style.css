@@ -171,6 +171,7 @@ a:hover{
   background-repeat:no-repeat;
 }
 
+
 #myinfo {
 	width:150px;
 }
@@ -195,6 +196,27 @@ a:hover{
   font-size:9pt;
   color: #186786;
 }
+
+
+.footer {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        width:800px;
+  border-top:1px solid #cccccc;
+  border-bottom:1px solid #cccccc;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+  text-align:center;
+  font-size:9pt;
+  color: #186786;
+}
+
+.footer:after {
+ content: 'University of Düsseldorf. Universitaetsstr. 1, Building 26.03, Room 66. Düsseldorf, 40225 (Germany).';
+}
+
+
 .titletext {
 	color: #C12424;
 	font-weight: bold;
