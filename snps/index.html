@@ -77,7 +77,7 @@
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"snps": "SNPs\@UAB", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer" };
+        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer" };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -110,7 +110,7 @@
             "Google Map")
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+        var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
 		
 		var snps = addServer('snps',month,year,'yellow');
 		var phdsnp = addServer('phdsnp',month,year,'orange');
@@ -159,7 +159,7 @@
 		map.addLayer(ncontrastrank);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+		var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
 		map.addLayer(sbass);
 
     	map.refresh();
@@ -182,7 +182,7 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"SNPs\@UAB": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "UAB": 7, "Meta\-SNP": 5, "ContrastRank": 6 };
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "HHU": 7, "Meta\-SNP": 5, "ContrastRank": 6 };
     	var numserver = ntool[servername];
    		for (i = 1; i <= 7; i++)
     	{
@@ -346,9 +346,9 @@
      <div id="maplegend"> 
      <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
      <img src="maps/img/bass.png" width="13" height="13" > 
-     <a style="cursor: pointer;" onclick='show_layer("UAB");' >UAB</a> &nbsp; 
+     <a style="cursor: pointer;" onclick='show_layer("HHU");' >HHU</a> &nbsp; 
      <img src="maps/img/yellow-ball.png" width="11" height="11"> 
-     <a style="cursor: pointer;" onclick='show_layer("SNPs\@UAB");' >SNPs@UAB</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("SNPs\@BioFolD");' >SNPs@BioFolD</a> &nbsp;
      <img src="maps/img/red-ball.png"  width="11" height="11" > 
      <a style="cursor: pointer;" onclick='show_layer("SNPs\&GO");' >SNPs&GO</a> &nbsp;
      <img src="maps/img/orange-ball.png" width="11" height="11"  > 
@@ -367,11 +367,7 @@
      </p>
     
     <!-- Start bottom -->
-    <div id="bottom">
-    University of Alabama at Birmingham.    
-    619 19th St. South, WP220.
-    Birmingham (AL), 35249 (USA).
-     <br>
+    <div id="bottom" class="footer">
     </div>
     <!-- End bottom -->
  

@@ -1,48 +1,48 @@
 <tags>
 <a href="http://snps.biofold.org/snps-and-go" hicolor="0xc782f9" color="0x8b9b48" style="font-size:14">SNPs&GO</a>
-<a href="pages/resources.html" hicolor="0x8f76ba" color="0x828b8f" style="font-size:21">prediction</a>
-<a href="pages/papers.html" hicolor="0x350f48" color="0x863b1e" style="font-size:15">human</a>
+<a href="../pages/resources.html" hicolor="0x8f76ba" color="0x828b8f" style="font-size:21">prediction</a>
+<a href="../pages/papers.html" hicolor="0x350f48" color="0x863b1e" style="font-size:15">human</a>
 <a href="http://snps.biofold.org" hicolor="0xd0aac7" color="0x74f0f2" style="font-size:13">variants</a>
-<a href="pages/resources.html" hicolor="0x2beb7f" color="0x8b8bfe" style="font-size:21">method</a>
+<a href="../pages/resources.html" hicolor="0x2beb7f" color="0x8b8bfe" style="font-size:21">method</a>
 <a href="http://snps.biofold.org/" hicolor="0x13d13c" color="0x282f9b" style="font-size:10">polymorphisms</a>
-<a href="pages/papers.html" hicolor="0x5798b7" color="0x6872c7" style="font-size:14">SVM</a>
-<a href="pages/papers.html" hicolor="0x46ef4a" color="0x9d5301" style="font-size:22">sequence</a>
-<a href="pages/papers.html" hicolor="0x4eb89b" color="0x625f93" style="font-size:26">structure</a>
+<a href="../pages/papers.html" hicolor="0x5798b7" color="0x6872c7" style="font-size:14">SVM</a>
+<a href="../pages/papers.html" hicolor="0x46ef4a" color="0x9d5301" style="font-size:22">sequence</a>
+<a href="../pages/papers.html" hicolor="0x4eb89b" color="0x625f93" style="font-size:26">structure</a>
 <a href="http://snps.biofold.org/" hicolor="0xf4cba8" color="0xd5500c" style="font-size:19">diseases</a>
-<a href="pages/papers.html" hicolor="0x f631a" color="0xedb97e" style="font-size:8">dataset</a>
-<a href="pages/resources.html" hicolor="0x1586f1" color="0xf584c9" style="font-size:11">approach</a>
-<a href="pages/papers.html" hicolor="0x8110c7" color="0x288db8" style="font-size:16">accuracy</a>
-<a href="pages/papers.html" hicolor="0x69a20c" color="0xbf8545" style="font-size:14">correlation</a>
-<a href="pages/papers.html" hicolor="0x27f80d" color="0x34d141" style="font-size:16">data</a>
-<a href="pages/papers.html" hicolor="0x5e8dc5" color="0x1cc3b5" style="font-size:11">results</a>
-<a href="pages/papers.html" hicolor="0x7f2348" color="0x dacdb" style="font-size:17">information</a>
-<a href="pages/papers.html" hicolor="0x2907f5" color="0xc3ffcb" style="font-size:8">evolution</a>
-<a href="pages/papers.html" hicolor="0xd8bb61" color="0x3064d3" style="font-size:13">profile</a>
-<a href="pages/papers.html" hicolor="0x9879bb" color="0xa5a1f0" style="font-size:11">function</a>
-<a href="pages/papers.html" hicolor="0xc7386b" color="0xef7f3b" style="font-size:8">nucleotide</a>
-<a href="pages/papers.html" hicolor="0x90153a" color="0xb6fae2" style="font-size:12">genetic</a>
-<a href="pages/papers.html" hicolor="0xd200a0" color="0xa59c2b" style="font-size:8">effects</a>
+<a href="../pages/papers.html" hicolor="0x f631a" color="0xedb97e" style="font-size:8">dataset</a>
+<a href="../pages/resources.html" hicolor="0x1586f1" color="0xf584c9" style="font-size:11">approach</a>
+<a href="../pages/papers.html" hicolor="0x8110c7" color="0x288db8" style="font-size:16">accuracy</a>
+<a href="../pages/papers.html" hicolor="0x69a20c" color="0xbf8545" style="font-size:14">correlation</a>
+<a href="../pages/papers.html" hicolor="0x27f80d" color="0x34d141" style="font-size:16">data</a>
+<a href="../pages/papers.html" hicolor="0x5e8dc5" color="0x1cc3b5" style="font-size:11">results</a>
+<a href="../pages/papers.html" hicolor="0x7f2348" color="0x dacdb" style="font-size:17">information</a>
+<a href="../pages/papers.html" hicolor="0x2907f5" color="0xc3ffcb" style="font-size:8">evolution</a>
+<a href="../pages/papers.html" hicolor="0xd8bb61" color="0x3064d3" style="font-size:13">profile</a>
+<a href="../pages/papers.html" hicolor="0x9879bb" color="0xa5a1f0" style="font-size:11">function</a>
+<a href="../pages/papers.html" hicolor="0xc7386b" color="0xef7f3b" style="font-size:8">nucleotide</a>
+<a href="../pages/papers.html" hicolor="0x90153a" color="0xb6fae2" style="font-size:12">genetic</a>
+<a href="../pages/papers.html" hicolor="0xd200a0" color="0xa59c2b" style="font-size:8">effects</a>
 <a href="http://snps.biofold.org/phd-snp" hicolor="0xac7fac" color="0xe6bd1d" style="font-size:10">PhD-SNP</a>
-<a href="pages/papers.html" hicolor="0xe70e9d" color="0x2d9074" style="font-size:22">mutations</a>
-<a href="pages/papers.html" hicolor="0x f4ad5" color="0x50b0a9" style="font-size:11">machine-learning</a>
-<a href="pages/resources.html" hicolor="0x11eb6d" color="0x150dc6" style="font-size:10">algorithm</a>
-<a href="pages/papers.html" hicolor="0x1dbf92" color="0xb0f4c4" style="font-size:22">RNA</a>
-<a href="pages/papers.html" hicolor="0x49cc37" color="0x46c788" style="font-size:13">alignments</a>
+<a href="../pages/papers.html" hicolor="0xe70e9d" color="0x2d9074" style="font-size:22">mutations</a>
+<a href="../pages/papers.html" hicolor="0x f4ad5" color="0x50b0a9" style="font-size:11">machine-learning</a>
+<a href="../pages/resources.html" hicolor="0x11eb6d" color="0x150dc6" style="font-size:10">algorithm</a>
+<a href="../pages/papers.html" hicolor="0x1dbf92" color="0xb0f4c4" style="font-size:22">RNA</a>
+<a href="../pages/papers.html" hicolor="0x49cc37" color="0x46c788" style="font-size:13">alignments</a>
 <a href="http://structure.biofold.org/sara" hicolor="0x74f48f" color="0x228799" style="font-size:15">SARA</a>
-<a href="pages/papers.html" hicolor="0xc8298a" color="0x3e64c7" style="font-size:8">benchmark</a>
-<a href="pages/papers.html" hicolor="0xfced87" color="0x6fc152" style="font-size:8">bioinformatics</a>
-<a href="pages/papers.html" hicolor="0x22abe9" color="0x8d02c1" style="font-size:11">drug</a>
-<a href="pages/papers.html" hicolor="0xdb69a7" color="0x19ad8a" style="font-size:11">genome</a>
-<a href="pages/papers.html" hicolor="0xe7e149" color="0x7c49a1" style="font-size:13">state</a>
+<a href="../pages/papers.html" hicolor="0xc8298a" color="0x3e64c7" style="font-size:8">benchmark</a>
+<a href="../pages/papers.html" hicolor="0xfced87" color="0x6fc152" style="font-size:8">bioinformatics</a>
+<a href="../pages/papers.html" hicolor="0x22abe9" color="0x8d02c1" style="font-size:11">drug</a>
+<a href="../pages/papers.html" hicolor="0xdb69a7" color="0x19ad8a" style="font-size:11">genome</a>
+<a href="../pages/papers.html" hicolor="0xe7e149" color="0x7c49a1" style="font-size:13">state</a>
 <a href="http://snps.biofold.org/snps-and-go" hicolor="0x 2efd5" color="0x19df58" style="font-size:10">SNPs</a>
-<a href="pages/papers.html" hicolor="0x55feb4" color="0x a8266" style="font-size:15">stability</a>
-<a href="pages/papers.html" hicolor="0xe5b616" color="0x9fcaec" style="font-size:8">compararison</a>
-<a href="pages/papers.html" hicolor="0xc25286" color="0xc8764a" style="font-size:16">models</a>
-<a href="pages/papers.html" hicolor="0xfa3d62" color="0x2986fb" style="font-size:8">molecules</a>
-<a href="pages/papers.html" hicolor="0xf43579" color="0xf99d2c" style="font-size:11">DDG</a>
-<a href="pages/papers.html" hicolor="0x3e55b2" color="0xf501cf" style="font-size:10">process</a>
-<a href="pages/papers.html" hicolor="0xe451a9" color="0xa8b3e6" style="font-size:8">foldons</a>
-<a href="pages/papers.html" hicolor="0x24fd87" color="0xe5d3b4" style="font-size:8">dynamics</a>
+<a href="../pages/papers.html" hicolor="0x55feb4" color="0x a8266" style="font-size:15">stability</a>
+<a href="../pages/papers.html" hicolor="0xe5b616" color="0x9fcaec" style="font-size:8">compararison</a>
+<a href="../pages/papers.html" hicolor="0xc25286" color="0xc8764a" style="font-size:16">models</a>
+<a href="../pages/papers.html" hicolor="0xfa3d62" color="0x2986fb" style="font-size:8">molecules</a>
+<a href="../pages/papers.html" hicolor="0xf43579" color="0xf99d2c" style="font-size:11">DDG</a>
+<a href="../pages/papers.html" hicolor="0x3e55b2" color="0xf501cf" style="font-size:10">process</a>
+<a href="../pages/papers.html" hicolor="0xe451a9" color="0xa8b3e6" style="font-size:8">foldons</a>
+<a href="../pages/papers.html" hicolor="0x24fd87" color="0xe5d3b4" style="font-size:8">dynamics</a>
 <a href="http://folding.biofold.org/i-mutant" hicolor="0xe6124b" color="0x11c05a" style="font-size:11">I-Mutant</a>
-<a href="pages/papers.html" hicolor="0x1a9505" color="0x3c1100" style="font-size:8">helix</a>
+<a href="../pages/papers.html" hicolor="0x1a9505" color="0x3c1100" style="font-size:8">helix</a>
 </tags>

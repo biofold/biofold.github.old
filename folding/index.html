@@ -77,7 +77,7 @@
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"folding": "Folding@UAB", "imutant": "I-Mutant", "kfold": "K-Fold" };
+        var htool = {"folding": "Folding@BioFolD", "imutant": "I-Mutant", "kfold": "K-Fold" };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -110,7 +110,7 @@
             "Google Map")
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+        var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
 		
 		var folding = addServer('folding',month,year,'yellow');
 		var imutant = addServer('imutant',month,year,'orange');
@@ -144,7 +144,7 @@
 		map.addLayer(nkfold);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'UAB', "maps/georss/uab.xml", {'icon': mbass});
+		var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
 		map.addLayer(sbass);
 
     	map.refresh();
@@ -167,7 +167,7 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"Folding\@UAB": 1, "I-Mutant": 2, "K-Fold": 3, "UAB": 4 };
+    	var ntool = {"Folding\@BioFolD": 1, "I-Mutant": 2, "K-Fold": 3, "HHU": 4 };
     	var numserver = ntool[servername];
    		for (i = 1; i <= 3; i++)
     	{
@@ -309,9 +309,9 @@
      <div id="maplegend"> 
      <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
      <img src="maps/img/bass.png" width="13" height="13" > 
-     <a style="cursor: pointer;" onclick='show_layer("UAB");' >UAB</a> &nbsp; 
+     <a style="cursor: pointer;" onclick='show_layer("HHU");' >HHU</a> &nbsp; 
      <img src="maps/img/yellow-ball.png" width="11" height="11"> 
-     <a style="cursor: pointer;" onclick='show_layer("Folding\@UAB");' >Folding@UAB</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("Folding\@BioFolD");' >Folding@BioFolD</a> &nbsp;
      <img src="maps/img/orange-ball.png" width="11" height="11"  > 
      <a style="cursor: pointer;" onclick='show_layer("I-Mutant");' >I-Mutant</a> &nbsp;
      <img src="maps/img/blu-ball.png" width="11" height="11"  >
