@@ -213,8 +213,10 @@ a:hover{
 }
 
 .footer:after {
- content: 'University of Düsseldorf. Universitaetsstr. 1, Building 26.13 (Level U1, Room 86). Düsseldorf, 40225 (Germany).';
+content: 'University of Bologna, Via F. Selmi 3, Room 104. Bologna, 40126 (Italy).';
 }
+/* content: 'University of Düsseldorf. Universitaetsstr. 1, Building 26.13 (Level U1, Room 86). Düsseldorf, 40225 (Germany).';
+}*/
 
 
 .titletext {
