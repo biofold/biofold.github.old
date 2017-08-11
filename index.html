@@ -1,51 +1,234 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-<title>BioFolD - Biomolecules, Folding and Disease</title>
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+   <title>SNPs@BioFolD</title>
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="Keywords" content=" 
-stability, folding, disease, mutation, SNP, 
-I-Mutant, Meta-SNP, PhD-SNP, K-Fold, machine learning, 
-Emidio, Capriotti, Bioinformatics, Proteins
-, University of Bologna, Bologna, unibo">
-<meta name="Author" content="Emidio Capriotti">
-<meta name="Generator" content="">
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <meta name="Keywords" content=" 
+   stability, folding, disease, mutation, SNP, Meta-SNP, 
+   I-Mutant, PhD-SNP, PhD-SNPg, K-Fold, SNPs&GO, ContrastRank, machine learning, 
+   Emidio Capriotti, Bioinformatics, Proteins,
+   University, Bologna, Italy, BioFolD">
+   <meta name="Author" content="Emidio Capriotti">
+   <meta name="Generator" content="">
 
-<link rel="stylesheet" href="pages/style.css" 
-type="text/css" title="BioFolD - Biomolecules, Folding and Disease"></head><body>
-<script language="javascript" type="text/javascript" src="pages/tag/swfobject.js"></script>
-
-
-<script type="text/javascript">
-
-        var dmi="";
-
-        function zoomout ()
-        {
-		hhu="https://www.google.com/maps/d/embed?mid=z9OJTrRYbXzI.k5_l6Zew8ijs&t=h&z=4&ie=UTF&ll=49.5,10&msa=0"
-                unibo="https://www.google.com/maps/d/embed?mid=1RQCJ7MYBo1Ln6O177gD90wq1nlY&t=h&z=4&ie=UTF&ll=44.5,11.4&msa=0"
-                dmi="https://maps.google.com/maps/ms?ie=UTF&msa=0&msid=213693996742349650093.0004d7321b686ae17f28c&t=h&z=4&output=embed";
-                document.getElementById("unibomap").src=unibo;
-        }
-
-        function zoomin ()
-        {
-		hhu="https://www.google.com/maps/d/embed?mid=z9OJTrRYbXzI.k5_l6Zew8ijs&t=h&z=16&ie=UTF&msa=0"
-		unibo="https://www.google.com/maps/d/embed?mid=1RQCJ7MYBo1Ln6O177gD90wq1nlY&t=h&z=18&ie=UTF&msa=0"		
-                dmi="http://maps.google.com/maps/ms?ie=UTF&msa=0&msid=213693996742349650093.0004d7321b686ae17f28c&t=h&z=18&output=embed";
-		
-                document.getElementById("unibomap").src=unibo;
-        }
+   <link rel="stylesheet" href="./pages/style.css" 
+   type="text/css" title="Folding@BioFolD">
+   <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
+   </head>
+   
+    <script type="text/javascript">
+    var today = new Date();
+    var year_now = today.getFullYear();
+    var month_now = today.getMonth();
+    function writeYearOptions(startYear, endYear)
+    {
+    var optionCounter;
+    for (optionCounter = startYear; optionCounter >= endYear; optionCounter--)
+    {
+    document.write('<OPTION value=' + optionCounter + '>' + optionCounter);
+    }
+    }
+    function writeMonthOptions()
+    {
+    var Months=["Year","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var vMonths=["","01","02","03","04","05","06","07","08","09","10","11","12"];
+    for (optionCounter = 0; optionCounter <= 12; optionCounter++)
+    {
+    document.write('<OPTION value=' + vMonths[optionCounter] + '>' + Months[optionCounter]);
+    }
+    }
+    function writeTools()
+    {
+    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs","ContrastRank","PhD-SNPg"];
+    for (optionCounter = 0; optionCounter <= 5; optionCounter++)
+    {
+    document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
+    }
+    }
 </script>
+<script src='http://maps.google.com/maps/api/js?v=3&amp;sensor=false'></script>
+    <script src="maps/OpenLayers.js">
+    </script>
+    
+    
+    <script type="text/javascript">
+    var map;
+        
+        
+    function CheckDate(month,year)
+		{
+		var dmonth = {"": 0, "01": 1,"02": 2,"03": 3,"04": 4,"05": 5,"06": 6,"07": 7,"08":8,"09": 9,"10": 10,"11": 11,"12": 12 };	
+		var today = new Date();
+        var this_year = today.getFullYear();
+        var this_month = today.getMonth()+1;
+        var long_today = this_year*100+this_month;
+        var long_date = year*100+dmonth[month];
+        /* Server up since Oct2010 = 201010 */
+		if ( (long_date>=201010 || long_date==201000 ) && long_date<=long_today )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		}    
+        
+        
+    function addServer(name,month,year,mcolor)
+        {
+        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer", 
+		"phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank" };
+        if (htool[name] === undefined )
+        {
+        	var geoname="Other";
+        }
+        else
+        {
+        	var geoname=htool[name];
+        }
+        var marlayer = new OpenLayers.Icon("maps/img/"+mcolor+"-ball.png", new OpenLayers.Size(11,11));
+        var filename="maps/georss/access_"+name+year+month+".xml";
+        if (CheckDate(month,year) == true)
+        {
+        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, filename, {'icon': marlayer});
+        }
+        else
+        {
+        	var nologfile = "maps/georss/nolog.xml";
+        	var slayer = new OpenLayers.Layer.GeoRSS( geoname, nologfile, {'icon': marlayer});
+        }
+        return slayer;
+        }
+        
 
-<body onload="zoomout();">
+    function timemap(month,year)
+    	{
+        	
+        map = new OpenLayers.Map('map');
 
-  <!-- Start main -->
-  <div id="main">
-  <br><br><br>
+        var satellite = new OpenLayers.Layer.Google(
+            "Google Map")
+            
+        var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
+        var sbass = new OpenLayers.Layer.GeoRSS( 'UNIBO', "maps/georss/unibo.xml", {'icon': mbass});
+		
+		var snps = addServer('snps',month,year,'yellow');
+		var phdsnp = addServer('phdsnp',month,year,'orange');
+		var snpsgo = addServer('snpsgo',month,year,'red');
+		var drcancer = addServer('drcancer',month,year,'blu');
+		var metasnp = addServer('metasnp',month,year,'green');
+		var contrastrank = addServer('contrastrank',month,year,'pink');
+		var phdsnpg = addServer('phdsnpg',month,year,'white');
+
+    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,sbass]); 
+
+
+		map.setCenter(new OpenLayers.LonLat(0,0), 1);
+    	map.addControl( new OpenLayers.Control.LayerSwitcher() );
+		}
+	
+	    function get_time()
+    	{ 
+    	var i;
+    	var month=document.selectlog.month.value;
+    	var year=document.selectlog.year.value;
+
+		map.layers[1].destroy();		
+
+		map.layers[1].destroy();
+		var nsnps = addServer('snps',month,year,'yellow');
+		map.addLayer(nsnps);
+    	
+		map.layers[1].destroy();
+		var nphdsnp = addServer('phdsnp',month,year,'orange');
+		map.addLayer(nphdsnp);
+		
+		map.layers[1].destroy();
+    		var nsnpsgo = addServer('snpsgo',month,year,'red');
+    		map.addLayer(nsnpsgo); 
+    	
+		map.layers[1].destroy();
+		var ndrcancer = addServer('drcancer',month,year,'blu');
+		map.addLayer(ndrcancer);
+
+		map.layers[1].destroy();
+		var nmetasnp = addServer('metasnp',month,year,'green');
+		map.addLayer(nmetasnp);	
+
+		map.layers[1].destroy();
+		var ncontrastrank = addServer('contrastrank',month,year,'pink');
+		map.addLayer(ncontrastrank);
+
+		map.layers[1].destroy();
+                var nphdsnpg = addServer('phdsnpg',month,year,'white');
+                map.addLayer(nphdsnpg);
+	
+		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
+		var sbass = new OpenLayers.Layer.GeoRSS( 'UNIBO', "maps/georss/unibo.xml", {'icon': mbass});
+		map.addLayer(sbass);
+
+    	//map.refresh();
+
+    	/*var pp = document.getElementById('map').innerHtml;
+    	document.write(pp);*/
+    	return false;
+    	}
+    
+    function get_now() 
+    	{
+    	var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth()+1;
+        var lmonth=["","01","02","03","04","05","06","07","08","09","10","11","12"];
+        timemap(lmonth[month],year);
+    	return false;
+    	}
+    	
+    function show_layer(servername)
+    	{
+    	var i;
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "UNIBO": 8, "Meta\-SNP": 5, "ContrastRank": 6, 
+			"PhD\-SNPg": 7 };
+    	var numserver = ntool[servername];
+   		for (i = 1; i <= 8; i++)
+    	{
+    	if (i != numserver)
+    	{
+    		map.layers[i].setVisibility(false);  
+    	}
+    	else
+    	{
+    		map.layers[i].setVisibility(true);
+    	}   	
+    	}
+    	//map.refresh();
+    	return false;
+    	}
+    	
+    function show_alllayer()
+    	{
+    	var i;
+   		for (i = 1; i <= 8; i++)
+    	{
+    		map.layers[i].setVisibility(true);
+    	}   	
+    	map.refresh();
+    	return false;
+    	}
+    
+   </script>
+   
+   
+   
+   
+   <body onload="get_now();">
+   <!-- Start main -->
+   <div id="main">
+   <br><br><br>
     <!-- Start header -->
-    <div id="content"><img class="header" src="./pages/img/strubio.png" alt="BioFolD -
-                University of Bologna" align="center" /><br />
+    <div id="content"><img class="header" src="./pages/img/strubio.png" 
+    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
       <br />
     </div>
    
@@ -54,68 +237,169 @@ type="text/css" title="BioFolD - Biomolecules, Folding and Disease"></head><body
 
     <!-- Start menu -->
     <div id="menu">
-      <table class="navig">
-	<tbody><tr>
-	  <td class="blank"></td>
-	  <nav>
-	  <td class="cell"><a href="index.html">Home</a></td>
-	  <td class="cell"><a href="pages/research.html">Research</a></td>
-	  <td class="cell"><a href="pages/people.html">People</a></td>
-	  <td class="cell"><a href="pages/resources.html">Resources</a></td>
-	  <td class="cell"><a href="pages/papers.html">Publications</a></td>
-	  <td class="cell"><a href="courses">Training</a></td>
-	  </nav>
-	  <td class="blank"></td>
-	</tr>
-      </tbody></table>
+          <table class="navig">
+          <tbody><tr>
+           <td class="blank"></td>
+           <td class="cell"><a href="index.html">Home</a></td>
+           <td class="cell"><a href="pages/research.html">Research</a></td>
+           <td class="cell"><a href="pages/people.html">People</a></td>
+           <td class="cell"><a href="pages/resources.html">Resources</a></td>
+           <td class="cell"><a href="pages/papers.html">Publications</a></td>
+           <td class="cell"><a href="http://biofold.org/courses">Training</a></td>
+           <td class="blank"></td></tr>
+        </tbody></table>
     </div>
     <!-- End menu -->
 
     <!-- Start content -->
     <div id="content">
+     
+   <p class="txtzone">
+	
+   <br />
+   In this page are reported information about the projects related to the 
+   annotation of the impact of Single Nucleotide Variants (SNVs) on 
+   human health.
+   Currently we have four available web tools located in our server:
+   <br /><br />
+     <table class="paper">
+     <tbody>
+     <tr><td valign="top" width=130>
+     <a target=blank      href="http://snps.biofold.org/phd-snp">
+     <b>PhD-SNP</b></a></td>     <td valign="top">Support Vector Machine based method to discriminate between neutral     or disease-related single point protein mutations.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/16895930">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/BioinfDis06.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>     
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank
+     href="http://snps.biofold.org/phd-snpg">
+     <b>PhD-SNP<sup>g</sup></b></a></td>
+     <td valign="top">Machine learning method for predicting pathogenic variants in
+     coding and non-coding regions.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="documents/papers/phdsnpg-web-2017.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>     
+     <a target=blank href="http://snps.biofold.org/meta-snp">
+     <b>Meta-SNP</b></a></td>     
+     <td valign="top">Meta-predictor of disease causing variants that uses 
+     the output of PANTHER, PhD-SNP, SIFT and SNAP
+     <br>     
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr> 
+     <tr><td valign="top" width=130>     
+     <a target=blank href="./snps-and-go">
+     <b>WS-SNPs&GO</b></a></td>
+     <td valign="top">Support Vector Machine method for the detection of 
+     disease-related SNPs based on functional information
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/19514061">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>  
+     <a href="http://biofold.org/pages/documents/papers/Calabrese_HumMut09.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>  
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>     <a target=blank 
+     href="./drcancer/index.html">
+     <b>DrCancer</b></a></td>
+     <td valign="top">Support Vector Machine based method to predict 
+     cancer-causing mutations (Beta version).
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_Genomics2011.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr>    
+     <tr><td valign="top" width=130>     <a target=blank
+     href="./contrastrank/index.html">
+     <b>ContastRank</b></a></td>
+     <td valign="top">Statistical method for the classification of cancer samples using exome
+     sequencing data.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/25161249">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Tian_Bioinformatics2014.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
+     </td></tr> 
+     </tbody></table>
+
+     <p class="txtzone">
+     The implementation of these web servers has been made possible
+     with Marie Curie IOF funds of the <a href="mut2dis/index.html" 
+     target=blank> Mut2Dis </a> project (PIOF-GA-2009-237225).
+     <br>
+     Since October 2010, the log file of this server is monitored periodically and the
+     tools' usage is mapped below. Better statistics about the usage of these resources are available 
+     on this <a href="http://biofold.org/awstats/awstats.pl?config=snps.biofold.org" target=_blank>web page<a/>. 
+     <br /><br /> 
+     <form name="selectlog" method=post  align=center >
+     </select>
+     <select name="month">
+     <script>
+     writeMonthOptions();
+     </script>
+     </select>
+     <select name="year">
+     <script>
+     writeYearOptions(year_now,2010);
+     </script>
+     </select>
+     <input type="button" value="OK" onclick="get_time();"/>
+     <br>
+     <br>
+     </form>     
+     <div id="map" class="mediummap" > </div>
+     <br>
+     <div id="maplegend"> 
+     <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
+     <img src="maps/img/bass.png" width="13" height="13" > 
+     <a style="cursor: pointer;" onclick='show_layer("UNIBO");' >UNIBO</a> &nbsp; 
+     <img src="maps/img/yellow-ball.png" width="11" height="11">
+     <a style="cursor: pointer;" onclick='show_layer("SNPs\@BioFolD");' >SNPs@BioFolD</a> &nbsp;
+     <br><br>
+     <img src="maps/img/red-ball.png"  width="11" height="11" >
+     <a style="cursor: pointer;" onclick='show_layer("SNPs\&GO");' >SNPs&GO</a> &nbsp;
+     <img src="maps/img/orange-ball.png" width="11" height="11"  > 
+     <a style="cursor: pointer;" onclick='show_layer("PhD\-SNP");' >PhD-SNP</a> &nbsp;
+     <img src="maps/img/green-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("Meta\-SNP");' >Meta-SNP</a> &nbsp;
+     <img src="maps/img/blu-ball.png" width="11" height="11"  > 
+     <a style="cursor: pointer;" onclick='show_layer("DrCancer");' >DrCancer</a> &nbsp;
+     <img src="maps/img/pink-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("ContrastRank");' >ContrastRank</a> &nbsp;
+     <img src="maps/img/white-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("PhD\-SNPg");' >PhD-SNPg</a> &nbsp;
+     </div>
+
+     
+     </p>
+     <br>
+     </p>
     
-        <br>
-    <p class="txtzone">
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The BioFolD Unit is currently hosted at 
-    the <a href="http://www.bigea.unibo.it/">Department of Biological,
-    Geological and Environmental Sciences (BiGeA)</a>, University of Bologna, Bologna, Italy (see below).
-    Computational resources are hosted on a server of the <a href="http://www.mathmodeling.hhu.de/" target=_blank>Institute for Mathematical Modeling of Biological Systems, University of Düsseldorf</a>.
-
-
-The research activity of the unit is focused on the analysis of of genetic variants using sequence and structure information of proteins and nucleic acids. The main research topics are the developing of new methods for predicting the impact of non-synonymous variants, comparison and prediction of protein and RNA structure.
-<br><br>
-The final goal of our research activity is the understanding of the relationship between genomic variations and disease using large amount of data derived from high-throughput techniques. 
-We are interested to develop new disease-specific algorithms and new tools for the personal genomics and personalized medicine.
+    <!-- Start bottom -->
+    <div id="bottom" class="footer">
+    </div>
+    <!-- End bottom -->
+ 
+    <div id="content"><img class="bottom" src="./pages/img/bottom.png" 
+    alt="BioFolD - Biomolecules, Folding and Disease" align="center" /></div>
+    <!-- End footer -->
+  </div>
+    <!-- End Main -->
   <br>
-      <br><br>
-   <center>
-   <iframe id="unibomap" width="650" height="450" frameborder="no" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-   <br/><br>
-   <div id="maplegend">
-   <a style="cursor: pointer;" onclick="zoomin();" >Zoom In</a>
-   -
-   <a style="cursor: pointer;" onclick="zoomout();" >Zoom Out</a>
-   </div>
-   </center>
-      
-    </p>
-    <br>
-   <!-- Start bottom -->
-   <div id="bottom" class="footer">
-   </div>
-   <!-- End bottom -->
-
-
-
-   <div id="content"><img class="bottom" src="./pages/img/bottom.png" alt="Computational Molecular Biology Unit -
-   University of Bologna" align="center" /></div>
-
-
-
-   <!-- End footer -->
-   </div>
-   <!-- End Main -->
-   </div>
-   <br><br>
-   </body></html>
+  <br>
+  </div>
+</body></html>
+   
