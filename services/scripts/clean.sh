@@ -3,6 +3,10 @@
 /usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/SNPs-and-GO/https/www-data/output/ 
 /usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/SNPs-and-GO/https/www-data/junk/
 /usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/SNPs-and-GO/https/www-data/tmp/
+# Clean PhD-SNP, PhD-SNPg e Fido-SNP
+/usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/PhD-SNP/https/www-data/output/
+/usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/PhD-SNPg/www-data/
+/usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/snps/Fido-SNP/www-data/
 # Clean SARA directory
 /usr/bin/python /export/bass/tools/scripts/cleandir.py /export/bass/structure/SARA/https/www-data/output/
 # Clean Meta-SNP directory
