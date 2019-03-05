@@ -1,18 +1,18 @@
    <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
    <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-   <title>BioFolD - Biomolecules, Folding and Disease</title>
+   <title>SNPs@BioFolD</title>
 
    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
    <meta name="Keywords" content=" 
    stability, folding, disease, mutation, SNP, Meta-SNP, 
-   I-Mutant, PhD-SNP, K-Fold, SNPs&GO, ContrastRank, machine learning, 
+   I-Mutant, PhD-SNP, PhD-SNPg, K-Fold, SNPs&GO, ContrastRank, machine learning, 
    Emidio Capriotti, Bioinformatics, Proteins,
-   University, Alabama, Birmingham, BioFolD">
+   University, Bologna, Italy, BioFolD">
    <meta name="Author" content="Emidio Capriotti">
    <meta name="Generator" content="">
 
-   <link rel="stylesheet" href="../pages/style.css" 
-   type="text/css" title="BioFolD - Biomolecules, Folding and Disease">
+   <link rel="stylesheet" href="./pages/style.css" 
+   type="text/css" title="Folding@BioFolD">
    <link rel="stylesheet" href="maps/mapstyle.css" type="text/css" />
    </head>
    
@@ -39,14 +39,14 @@
     }
     function writeTools()
     {
-    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs"];
+    var Tools=["ALL","SNPs&GO","PhD-SNP","DrCancer","Meta-SNP","SNPs","ContrastRank","PhD-SNPg"];
     for (optionCounter = 0; optionCounter <= 5; optionCounter++)
     {
     document.write('<OPTION value=' + Tools[optionCounter] + '>' + Tools[optionCounter]);
     }
     }
 </script>
-<script src='http://maps.google.com/maps/api/js?v=3&amp;sensor=false'></script>
+<script src='http://maps.google.com/maps/api/js?v=3&amp;key=AIzaSyBP_aWXUFb8fqmhUChl_3DdapQDyf5smtk&amp;sensor=false'></script>
     <script src="maps/OpenLayers.js">
     </script>
     
@@ -77,7 +77,8 @@
         
     function addServer(name,month,year,mcolor)
         {
-        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer" };
+        var htool = {"snps": "SNPs\@BioFolD", "snpsgo": "SNPs\&GO", "phdsnp": "PhD\-SNP", "metasnp": "Meta-SNP", "drcancer": "DrCancer", 
+		"phdsnpg": "PhD\-SNPg", "contrastrank": "ContrastRank" };
         if (htool[name] === undefined )
         {
         	var geoname="Other";
@@ -110,7 +111,7 @@
             "Google Map")
             
         var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-        var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+        var sbass = new OpenLayers.Layer.GeoRSS( 'UNIBO', "maps/georss/unibo.xml", {'icon': mbass});
 		
 		var snps = addServer('snps',month,year,'yellow');
 		var phdsnp = addServer('phdsnp',month,year,'orange');
@@ -118,8 +119,9 @@
 		var drcancer = addServer('drcancer',month,year,'blu');
 		var metasnp = addServer('metasnp',month,year,'green');
 		var contrastrank = addServer('contrastrank',month,year,'pink');
+		var phdsnpg = addServer('phdsnpg',month,year,'white');
 
-    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,sbass]); 
+    	map.addLayers([satellite,snps,phdsnp,snpsgo,drcancer,metasnp,contrastrank,phdsnpg,sbass]); 
 
 
 		map.setCenter(new OpenLayers.LonLat(0,0), 1);
@@ -157,12 +159,16 @@
 		map.layers[1].destroy();
 		var ncontrastrank = addServer('contrastrank',month,year,'pink');
 		map.addLayer(ncontrastrank);
+
+		map.layers[1].destroy();
+                var nphdsnpg = addServer('phdsnpg',month,year,'white');
+                map.addLayer(nphdsnpg);
 	
 		var mbass = new OpenLayers.Icon("maps/img/bass.png", new OpenLayers.Size(13,13));
-		var sbass = new OpenLayers.Layer.GeoRSS( 'HHU', "maps/georss/hhu.xml", {'icon': mbass});
+		var sbass = new OpenLayers.Layer.GeoRSS( 'UNIBO', "maps/georss/unibo.xml", {'icon': mbass});
 		map.addLayer(sbass);
 
-    	map.refresh();
+    	//map.refresh();
 
     	/*var pp = document.getElementById('map').innerHtml;
     	document.write(pp);*/
@@ -182,9 +188,10 @@
     function show_layer(servername)
     	{
     	var i;
-    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "HHU": 7, "Meta\-SNP": 5, "ContrastRank": 6 };
+    	var ntool = {"SNPs\@BioFolD": 1, "SNPs\&GO": 3, "PhD\-SNP": 2, "DrCancer": 4, "UNIBO": 8, "Meta\-SNP": 5, "ContrastRank": 6, 
+			"PhD\-SNPg": 7 };
     	var numserver = ntool[servername];
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     	if (i != numserver)
     	{
@@ -195,14 +202,14 @@
     		map.layers[i].setVisibility(true);
     	}   	
     	}
-    	map.refresh();
+    	//map.refresh();
     	return false;
     	}
     	
     function show_alllayer()
     	{
     	var i;
-   		for (i = 1; i <= 7; i++)
+   		for (i = 1; i <= 8; i++)
     	{
     		map.layers[i].setVisibility(true);
     	}   	
@@ -220,7 +227,7 @@
    <div id="main">
    <br><br><br>
     <!-- Start header -->
-    <div id="content"><img class="header" src="../pages/img/strubio.png" 
+    <div id="content"><img class="header" src="./pages/img/strubio.png" 
     alt="BioFolD - Biomolecules, Folding and Disease" align="center" /><br />
       <br />
     </div>
@@ -234,11 +241,11 @@
           <tbody><tr>
            <td class="blank"></td>
            <td class="cell"><a href="index.html">Home</a></td>
-           <td class="cell"><a href="../pages/research.html">Research</a></td>
-           <td class="cell"><a href="../pages/people.html">People</a></td>
-           <td class="cell"><a href="../pages/resources.html">Resources</a></td>
-           <td class="cell"><a href="../pages/papers.html">Publications</a></td>
-           <td class="cell"><a href="../courses/">Training</a></td>
+           <td class="cell"><a href="pages/research.html">Research</a></td>
+           <td class="cell"><a href="pages/people.html">People</a></td>
+           <td class="cell"><a href="pages/resources.html">Resources</a></td>
+           <td class="cell"><a href="pages/papers.html">Publications</a></td>
+           <td class="cell"><a href="http://biofold.org/courses">Training</a></td>
            <td class="blank"></td></tr>
         </tbody></table>
     </div>
@@ -262,9 +269,21 @@
      <b>PhD-SNP</b></a></td>     <td valign="top">Support Vector Machine based method to discriminate between neutral     or disease-related single point protein mutations.
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/16895930">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/BioinfDis06.pdf">
-     <img width="14" src="../pages/img/pdf.gif"></a>     
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/BioinfDis06.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>     
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank
+     href="http://snps.biofold.org/phd-snpg">
+     <b>PhD-SNP<sup>g</sup></b></a></td>
+     <td valign="top">Machine learning method for predicting pathogenic variants in
+     coding and non-coding regions.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="documents/papers/phdsnpg-web-2017.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr>
      <tr><td valign="top" width=130>     
      <a target=blank href="http://snps.biofold.org/meta-snp">
@@ -273,46 +292,46 @@
      the output of PANTHER, PhD-SNP, SIFT and SNAP
      <br>     
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_MetaSNP_BMCGenomics13.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr> 
      <tr><td valign="top" width=130>     
-     <a target=blank href="http://snps.biofold.org/snps-and-go">
+     <a target=blank href="./snps-and-go">
      <b>WS-SNPs&GO</b></a></td>
      <td valign="top">Support Vector Machine method for the detection of 
      disease-related SNPs based on functional information
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/19514061">
-     <img src="../pages/img/pubmed.gif"></a>  
-     <a href="../pages/documents/papers/Calabrese_HumMut09.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>  
+     <a href="http://biofold.org/pages/documents/papers/Calabrese_HumMut09.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
-     <img src="../pages/img/pubmed.gif"></a>  
-     <a href="../pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>  
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr>
      <tr><td valign="top" width=130>     <a target=blank 
-     href="http://snps.biofold.org/drcancer/index.html">
+     href="./drcancer/index.html">
      <b>DrCancer</b></a></td>
      <td valign="top">Support Vector Machine based method to predict 
      cancer-causing mutations (Beta version).
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Capriotti_Genomics2011.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Capriotti_Genomics2011.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr>    
      <tr><td valign="top" width=130>     <a target=blank
-     href="http://snps.biofold.org/contrastrank/index.html">
+     href="./contrastrank/index.html">
      <b>ContastRank</b></a></td>
      <td valign="top">Statistical method for the classification of cancer samples using exome
      sequencing data.
      <br>
      <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/25161249">
-     <img src="../pages/img/pubmed.gif"></a>
-     <a href="../pages/documents/papers/Tian_Bioinformatics2014.pdf">
-     <img src="../pages/img/pdf.gif"></a>
+     <img src="http://biofold.org/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/pages/documents/papers/Tian_Bioinformatics2014.pdf">
+     <img width="15" src="http://biofold.org/pages/img/pdf.gif"></a>
      </td></tr> 
      </tbody></table>
 
@@ -346,19 +365,22 @@
      <div id="maplegend"> 
      <a style="cursor: pointer;" onclick='show_alllayer();' ><strong>Servers</strong></a>: &nbsp;
      <img src="maps/img/bass.png" width="13" height="13" > 
-     <a style="cursor: pointer;" onclick='show_layer("HHU");' >HHU</a> &nbsp; 
-     <img src="maps/img/yellow-ball.png" width="11" height="11"> 
+     <a style="cursor: pointer;" onclick='show_layer("UNIBO");' >UNIBO</a> &nbsp; 
+     <img src="maps/img/yellow-ball.png" width="11" height="11">
      <a style="cursor: pointer;" onclick='show_layer("SNPs\@BioFolD");' >SNPs@BioFolD</a> &nbsp;
-     <img src="maps/img/red-ball.png"  width="11" height="11" > 
+     <br><br>
+     <img src="maps/img/red-ball.png"  width="11" height="11" >
      <a style="cursor: pointer;" onclick='show_layer("SNPs\&GO");' >SNPs&GO</a> &nbsp;
      <img src="maps/img/orange-ball.png" width="11" height="11"  > 
      <a style="cursor: pointer;" onclick='show_layer("PhD\-SNP");' >PhD-SNP</a> &nbsp;
      <img src="maps/img/green-ball.png" width="11" height="11"  >
-          <a style="cursor: pointer;" onclick='show_layer("Meta\-SNP");' >Meta-SNP</a> &nbsp;
+     <a style="cursor: pointer;" onclick='show_layer("Meta\-SNP");' >Meta-SNP</a> &nbsp;
      <img src="maps/img/blu-ball.png" width="11" height="11"  > 
      <a style="cursor: pointer;" onclick='show_layer("DrCancer");' >DrCancer</a> &nbsp;
      <img src="maps/img/pink-ball.png" width="11" height="11"  >
      <a style="cursor: pointer;" onclick='show_layer("ContrastRank");' >ContrastRank</a> &nbsp;
+     <img src="maps/img/white-ball.png" width="11" height="11"  >
+     <a style="cursor: pointer;" onclick='show_layer("PhD\-SNPg");' >PhD-SNPg</a> &nbsp;
      </div>
 
      
@@ -371,7 +393,7 @@
     </div>
     <!-- End bottom -->
  
-    <div id="content"><img class="bottom" src="../pages/img/bottom.png" 
+    <div id="content"><img class="bottom" src="./pages/img/bottom.png" 
     alt="BioFolD - Biomolecules, Folding and Disease" align="center" /></div>
     <!-- End footer -->
   </div>
