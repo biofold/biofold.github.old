@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<title>Emidio Capriotti - BioFold@UAB - Resuorces</title>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="Keywords" content=" 
+stability, folding, disease, mutation, SNP, 
+I-Mutant, PhD-SNP, K-Fold, machine learning, 
+Emidio Capriotti, Bioinformatics, Proteins
+, University of Alabama, Birmingham, UAB, Division of Informatic">
+<meta name="Author" content="Emidio Capriotti">
+<meta name="Generator" content="">
+
+<link rel="stylesheet" href="http://biofold.org/emidio/pages/style.css" 
+type="text/css" title="Emidio Capriotti - BioFold@UAB - Resources"></head><body>
+
+  <!-- Start main -->
+  <div id="main">
+  <br><br><br>
+    <!-- Start header -->
+    <div id="content"><img class="header" src="http://biofold.org/emidio/pages/img/strubio.png" alt="BioFolD -
+                University of Alabama at Birmingham" align="center" /><br />
+      <br />
+    </div>
+   
+    
+    <!-- End header -->
+
+    <!-- Start menu -->
+    <div id="menu">
+    <table class="navig">
+	<tbody><tr>
+	  <td class="blank"></td>
+	  <td class="cell"><a href="http://biofold.org/emidio/index.html">Home</a></td>
+	  <td class="cell"><a href="http://biofold.org/emidio/pages/research.html">Research</a></td>
+	  <td class="cell"><a href="http://biofold.org/emidio/pages/training.html">Training</a></td>
+	  <td class="cell"><a href="http://biofold.org/emidio/pages/resources.html">Resources</a></td>
+	  <td class="cell"><a href="http://biofold.org/emidio/pages/papers.html">Publications</a></td>
+	  <td class="blank"></td>
+	</tr>
+      </tbody></table>
+    </div>
+    <!-- End menu -->
+
+   <!-- Start content -->
+    <div id="content">
+     
+<p class="txtzone">
+    <b class="titletext">	
+     Web Servers</b><br>
+     <br>
+     The researchers of the Computational Molecular Biology Unit at UAB have developed 
+     several web server applications that are currently hosted by other 
+     servers at 
+     of the <a target=blank href="http://bioinfo.uib.es/">
+     University of Balearic Islands</a> (Spain) and <a target=blank 
+     href="http://www.biocomp.unibo.it">University of Bologna</a> 
+     (Italy). In the next 
+     months a mirror of this applications will be made available on this server.
+     Currently you can reach these web servers using the following link.<br><br>
+     <p class="year">
+     Folding and Stability
+     </p>
+     <table cellpadding="7" cellspacing="7" class="paper">
+     <tbody>
+     <tr><td valign="top" width=130>
+     <a target=blank 
+     href="http://gpcr2.biocomp.unibo.it/cgi/predictors/I-Mutant/I-Mutant.cgi">
+     <b>I-Mutant1.0</b></a></td> 
+     <td valign="top">Neural Network based method to predict the sign of free energy change 
+     of proteins upon single point mutation.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/15262782">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/ISMB04.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130> 
+     <a target=blank 
+     href="http://gpcr2.biocomp.unibo.it/cgi/predictors/I-Mutant2.0/I-Mutant2.0.cgi">
+     <b>I-Mutant2.0</b></a></td>
+     <td valign="top">Support Vector Machine based method to predict the sign and the value 
+     of free energy change of proteins upon single point mutation.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/15980478">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/nar05.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank 
+     href="http://gpcr2.biocomp.unibo.it/cgi/predictors/K-Fold/K-Fold.cgi">
+     <b>K-Fold</b></a></td>
+     <td valign="top">Support Vector Machine based method to predict the mechanism and 
+     rate of protein folding kinetic.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/17138584">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/KFold_Bioinfo07.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     </tbody></table>
+     <p class="year">
+     Mutation and Disease
+     </p>
+     <table cellpadding="7" cellspacing="7" class="paper">
+     <tbody>
+     <tr><td valign="top" width=130>
+     <a target=blank 
+     href="http://gpcr.biocomp.unibo.it/~emidio/PhD-SNP/PhD-SNP.htm">
+     <b>PhD-SNP</b></a></td>
+     <td valign="top">Support Vector Machine based method to discriminate between neutral 
+     or disease-related single point protein mutations.
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/16895930">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/BioinfDis06.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank 
+     href="http://snps.uib.es/snps-and-go/">
+     <b>WS-SNPs&GO</b></a></td>
+     <td valign="top">Support Vector Machine method for the detection of disease-related 
+     SNPs based on functional information
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/19514061">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/Calabrese_HumMut09.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>  
+     <a href="http://biofold.org/emidio/pages/documents/papers/Capriotti_AIMM_BMCBioinformatics2011.pdf">
+     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     <tr><td valign="top" width=130>
+     <a target=blank 
+     href="http://bioinfo.uib.es/~emidio/cgi-bin/DrCancer/DrCancer.html">
+     <b>DrCancer</b></a></td>
+     <td valign="top">Support Vector Machine based method to predict cancer-causing 
+     mutations (Beta version).
+     <br>
+     <a target=blank href="http://www.ncbi.nlm.nih.gov/pubmed/21992054">
+     <img src="http://biofold.org/emidio/pages/img/pubmed.gif"></a>
+     <a href="http://biofold.org/emidio/pages/documents/papers/Capriotti_Genomics2011.pdf">     <img src="http://biofold.org/emidio/pages/img/pdf.gif"></a>
+     </td></tr>
+     </tbody></table>
+     <p class="year">
+     Structure Comparison
+     <table cellpadding="7" cellspacing="7" class="paper">
+     <tbody>
+     <tr>
+       <td valign="top" width=130><a target="blank" 
+     href="http://structure.biofold.org/sara/"><b>SARA</b></a></td>
+       <td valign="top">Method for RNA structure alignment and RNA functional assignment. <br />
+         <a target="blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19483098"> <img src="http://biofold.org/emidio/pages/img/pubmed.gif" /></a> <a href="http://biofold.org/emidio/pages/documents/papers/CapriottiNAR09.pdf"> <img src="http://biofold.org/emidio/pages/img/pdf.gif" /></a></td>
+     </tr>
+     </tbody></table>
+     </p>
+     <p><br>
+       
+       </p>
+       
+       <!-- Start bottom -->
+      </p>
+     <div id="bottom">
+    University of Alabama at Birmingham.
+    619 19th St. South, WP220.
+    Birmingham (AL), 35249 (USA).
+     <br>
+    </div>
+    <!-- End bottom -->
+ 
+    
+    
+    <div id="content"><img class="bottom" src="http://biofold.org/emidio/pages/img/bottom.png" alt="Computational Molecular Biology Unit -
+   University of Alabama at Birmingham" align="center" /></div>
+   
+    
+    
+    <!-- End footer -->
+  </div>
+    <!-- End Main -->
+  </div>
+  <br><br>
+</body></html>

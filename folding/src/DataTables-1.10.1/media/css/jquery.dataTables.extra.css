@@ -1,0 +1,30 @@
+td.details-control {
+    background: url('/src/DataTables-1.10.1/media/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/src/DataTables-1.10.1/media/images/details_close.png') no-repeat center 	center;
+}
+
+td.vertical {
+    height: 0px;
+    vertical-align: top;
+}
+
+div.child_title {
+	text-align: right;
+	font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 11pt;
+	}
+
+div.child_seq {
+	text-align: left;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 11pt;
+	}
+
+div.seqs{        
+	text-align: left;       
+        }

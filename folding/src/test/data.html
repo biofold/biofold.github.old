@@ -1,0 +1,29 @@
+<html>
+<body>
+<link rel="stylesheet" type="text/css" href="/src/DataTables-1.10.1/media/css/jquery.dataTables.css">
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="/src/DataTables-1.10.1/media/js/jquery.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="/src/DataTables-1.10.1/media/js/jquery.dataTables.js"></script>
+<!-- d3js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js" charset="utf-8"></script>
+<script src="data.js">
+</script>
+
+Score Filter: <div id="score" onchange="drawTable()"> <select>
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3" selected="selected" >3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+
+
+<table id="example" class="display" onload="drawTable()" cellspacing="0" width="100%"></div>
+
+<script>
+drawTable()
+</script>
+</body>
+</html>
